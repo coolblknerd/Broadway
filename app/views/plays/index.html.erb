@@ -1,1 +1,12 @@
 <h1>I've never been to Broadway</h1>
+
+<% @plays.each do |play| %>
+  <div id="play-box">
+    <h2><%= link_to play.title, play_path(play) %></h2>
+    <h4><%= play.director %></h4>
+    <h5><%= time_ago_in_words(play.created_at) %> ago... </h5>
+    <p><%= truncate(play.description, length: 100) %></p>
+  </div>
+<% end %>
+
+<%= link_to "New Play", new_play_path, class: "btn btn-primary" %>
