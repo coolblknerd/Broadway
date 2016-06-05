@@ -1,9 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :find_play
-  before_action :authenticate_user!
 
   def new
-    @review.new
+    @review = Review.new
   end
 
   def create
