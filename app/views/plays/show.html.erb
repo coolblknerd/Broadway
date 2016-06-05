@@ -9,6 +9,9 @@
       <h1><%= @play.title %></h1>
       <h3><span><em>Directed by </em></span><%= @play.director %></h3>
       <h4><%= @play.category.name %></h4>
+      <h4>Average Rating</h4>
+      <div id="average-review-rating" data-score="<%= @average_review %>"></div><br>
+      <span class="number-of-review"><em> From </em><%= @play.reviews.count %> reviews </span>
       <div id="actions">
         <% if user_signed_in? %>
         <% if current_user.id == @play.user_id %>
@@ -29,3 +32,23 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('#average-review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

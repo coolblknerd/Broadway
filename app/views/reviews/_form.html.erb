@@ -1,14 +1,7 @@
 <%= form_for([@play, @play.reviews.build]) do |f| %>
 
-<div class="form-group">
-  <%= f.label :rating %>
-  <p>
-    <%= f.radio_button(:rating, "1") %> 1
-    <%= f.radio_button(:rating, "2") %> 2
-    <%= f.radio_button(:rating, "3") %> 3
-    <%= f.radio_button(:rating, "4") %> 4
-    <%= f.radio_button(:rating, "5") %> 5
-  </p>
+<div id="rating-form">
+  <label>Rating</label>
 </div>
 
 <div class="form-group">
@@ -16,6 +9,13 @@
   <%= f.text_area :comment, rows: "2", class: "form-control" %>
 </div>
 
-<%= f.submit %>
+<%= f.submit "Rate!", class: "btn btn-primary" %>
 
 <% end %>
+
+<script>
+$('#rating-form').raty({
+  path: '/assets/',
+  scoreName: 'review[rating]'
+});
+</script>
