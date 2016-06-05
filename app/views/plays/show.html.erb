@@ -1,29 +1,31 @@
-<div class="row">
-  <div class="col-md-4">
-    <%= image_tag @play.play_img.url(:play_show), id: "play-show" %>
-  </div>
-
-  <div class="col-md-8">
-    <div id="play-info"></div>
-    <h1><%= @play.title %></h1>
-    <h3><span><em>Directed by </em></span><%= @play.director %></h3>
-    <h4><%= @play.category.name %></h4>
-    <div id="actions">
-      <% if user_signed_in? %>
-      <% if current_user.id == @play.user_id %>
-      <h5><%= link_to "Edit", edit_play_path(@play) %> | <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %></h5>
-      <% end %>
-      <% end %>
+<div class="col-md-10 col-md-offset-1">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @play.play_img.url(:play_show), id: "play-show" %>
     </div>
-    <p><%= simple_format(@play.description) %></p>
+
+    <div class="col-md-8">
+      <div id="play-info"></div>
+      <h1><%= @play.title %></h1>
+      <h3><span><em>Directed by </em></span><%= @play.director %></h3>
+      <h4><%= @play.category.name %></h4>
+      <div id="actions">
+        <% if user_signed_in? %>
+        <% if current_user.id == @play.user_id %>
+        <h5><%= link_to "Edit", edit_play_path(@play) %> | <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %></h5>
+        <% end %>
+        <% end %>
+      </div>
+      <p><%= simple_format(@play.description) %></p>
+    </div>
+
   </div>
 
-</div>
-
-<div class="row">
+  <div class="row">
     <div id="review-info">
       <h1>Reviews</h1>
       <%= render @play.reviews %>
       <%= link_to "Add Review", new_play_review_path(@play), class: "btn btn-primary" %>
     </div>
+  </div>
 </div>

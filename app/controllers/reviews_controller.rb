@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_play
+  before_action :find_review, except: [:new, :create]
 
   def new
     @review = Review.new
