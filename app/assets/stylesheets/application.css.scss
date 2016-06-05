@@ -1,8 +1,18 @@
 /*
- *= require_tree .
- *= require_self
- */
+*= require_tree .
+*= require_self
+*/
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
- @import "normalize";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "normalize";
+
+.play {
+  height: 350px;
+  width: 250px;
+}
+
+#play-show {
+  height: 475px;
+  width: 325px;
+}
