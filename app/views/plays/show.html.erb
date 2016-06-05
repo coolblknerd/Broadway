@@ -1,3 +1,10 @@
 <h1><%= @play.title %></h1>
-<h3>Directed by <%= @play.director %></h3>
+<h3> - Directed by <%= @play.director %></h3>
+<div id="actions">
+  <% if user_signed_in? %>
+  <% if current_user.id == @play.user_id %>
+  <h5><%= link_to "Edit", edit_play_path(@play) %> | <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %></h5>
+  <% end %>
+  <% end %>
+</div>
 <p><%= simple_format(@play.description) %></p>
