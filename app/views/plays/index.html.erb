@@ -1,10 +1,14 @@
-<h1>I've never been to Broadway</h1>
+<h1 id="current-category"><%= params[:category] %></h1>
 
-<% @plays.each do |play| %>
-  <div id="play-box">
-    <h2><%= link_to play.title, play_path(play) %></h2>
-    <h4><%= play.director %></h4>
-    <h5><%= time_ago_in_words(play.created_at) %> ago... </h5>
-    <p><%= truncate(play.description, length: 100) %></p>
-  </div>
+<% if @plays.count == 0 %>
+  <h3>There are no plays in this category</h3>
+<% else %>
+  <% @plays.each do |play| %>
+    <div id="play-box">
+      <h2><%= link_to play.title, play_path(play) %></h2>
+      <h4><%= play.director %></h4>
+      <h5><%= time_ago_in_words(play.created_at) %> ago... </h5>
+      <p><%= truncate(play.description, length: 100) %></p>
+    </div>
+  <% end %>
 <% end %>
